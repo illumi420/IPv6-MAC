@@ -27,18 +27,40 @@ def decToBin(decimal_number):
 
 def mac2linklocal():
     mac = input("Please Enter MAC-Address: ")
+    
     first_hex_block = mac[0] + mac[1]
+    
     second_nibble_in_dec = int(first_hex_block[1], 16)
+    
     second_nibble_in_bin = decToBin(second_nibble_in_dec)[-4:]
+    
     new_second_nibble_in_bin = bitFlipper(second_nibble_in_bin)
     
+    second_nibble_back2hex = hex(int(new_second_nibble_in_bin,2)).lower()
+    second_nibble_back2hex = second_nibble_back2hex[-1]
+    
+    if mac[1] != second_nibble_back2hex:
+        new_character = str(second_nibble_back2hex)
+        mac = mac[:1] + new_character + mac[2:]
+
+    if len(mac) == 17:
+        position = 8
+        new_character = "-ff-fe-"
+        mac = mac[:position] + new_character + mac[position+1:]
+
+    counter = 5
+    for i in range(len(mac)):
+        if i == counter:
+            position = counter
+            new_character = ":"
+            mac = mac[:position] + new_character + mac[position+1:]
+            counter += 6
+    
+    mac = mac.replace("-", "")
+
+    return f"IPv6 Link-Local Address: " " fe80::"+mac.lower()
    
-    
-    # second_4_bits = int(mac[1], 16)
-    # print(second_4_bits)
-    # second_bin = decToBin(second_4_bits)
-    # print(second_bin)
-    
+   
     
     
 print("Please Select an Option: ")
