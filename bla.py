@@ -1,3 +1,13 @@
+def bitFlipper(binary_string):
+    if binary_string[-2] == "0":
+        flip = "1"
+        binary_string = binary_string[:-2] + flip + binary_string[-1]
+    else:
+        flip = "0"
+        binary_string = binary_string[:-2] + flip + binary_string[-1]
+    
+    return binary_string
+
 
 def decToBin(decimal_number):
     bin_format = ""
@@ -20,6 +30,7 @@ def mac2linklocal():
     first_hex_block = mac[0] + mac[1]
     second_nibble_in_dec = int(first_hex_block[1], 16)
     second_nibble_in_bin = decToBin(second_nibble_in_dec)[-4:]
+    new_second_nibble_in_bin = bitFlipper(second_nibble_in_bin)
     
    
     
