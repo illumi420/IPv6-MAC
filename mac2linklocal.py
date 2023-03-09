@@ -78,33 +78,8 @@ def linklocal2mac():
     ipv6 = ipv6.replace("-FF-FE-", "-")
 
     second_4_bits = int(ipv6[1], 16)
-    second_bin = bin(second_4_bits)
-    #print(second_bin)
-
-    if len(second_bin) >= 3:
-        if second_bin[-1] == "0":
-            position = -2
-            new_character = '01'
-            second_bin = second_bin[:position] + new_character + second_bin[position+1:]
-
-        if second_bin[-1] == "1":
-            position = -2
-            new_character = '00'
-            second_bin = second_bin[:position] + new_character + second_bin[position+1]
-    else:
-
-        if second_bin[-2] == "0":
-            position = -2
-            new_character = '1'
-            second_bin = second_bin[:position] + new_character + second_bin[position+1:]
-            #print(second_bin)
-
-        if second_bin[-2] == "1":
-            position = -2
-            new_character = '0'
-            second_bin = second_bin[:position] + new_character + second_bin[position+1:]
-            #print(second_bin)
-
+    second_bin = decToBin(second_4_bits)[-4:]
+    second_bin = bitFlipper(second_bin)
     second_bin = int(second_bin, 2)
     second_bin = hex(second_bin).upper()
     second_4_bits = second_bin[2:]
