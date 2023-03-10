@@ -24,12 +24,12 @@ def verbose(user_select):
             f"# take the {bcolors.RED}second nibble{bcolors.ENDC} of that first hex octet {first_hex_block[0]}{bcolors.RED}{first_hex_block[1]}{bcolors.ENDC}"
         )
         print(
-            f"# convert that {bcolors.RED}second nibble{bcolors.ENDC} into binary",
+            f"# convert that {bcolors.RED}second nibble{bcolors.ENDC} into binary string",
             second_nibble_in_bin,
         )
-        print(f"# flip/invert the most significant bit in that binary")
+        print(f"# flip/invert the most significant bit in that binary string")
         print(
-            f"# {second_nibble_in_bin[:2]}{bcolors.RED}{second_nibble_in_bin[-2]}{bcolors.ENDC}{second_nibble_in_bin[-1]} => {new_second_nibble_in_bin[:2]}{bcolors.OKGREEN}{new_second_nibble_in_bin[-2]}{bcolors.ENDC}{new_second_nibble_in_bin[-1]} now convert the new binary back to hex"
+            f"# {second_nibble_in_bin[:2]}{bcolors.RED}{second_nibble_in_bin[-2]}{bcolors.ENDC}{second_nibble_in_bin[-1]} => {new_second_nibble_in_bin[:2]}{bcolors.OKGREEN}{new_second_nibble_in_bin[-2]}{bcolors.ENDC}{new_second_nibble_in_bin[-1]} now convert the new binary string back to hex"
         )
         print(
             f"# {new_second_nibble_in_bin} => {second_nibble_back2hex} this is the new first hex octet {mid_initial_mac[0]}{bcolors.OKGREEN}{mid_initial_mac[1]}{bcolors.ENDC}"
