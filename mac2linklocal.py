@@ -105,7 +105,7 @@ def mac2linklocal():
 
 
 def linklocal2mac():
-    ipv6 = input(f"Please Enter {bcolors.OKBLUE}IPv6 Link::Local Address:{bcolors.OKBLUE} ").upper()
+    ipv6 = input(f"Please Enter {bcolors.OKBLUE}IPv6 Link::Local Address:{bcolors.OKBLUE} ").lower()
     ipv6 = ipv6[6:]
 
     for i in range(len(ipv6)):
@@ -118,13 +118,13 @@ def linklocal2mac():
 
     ipv6 = ipv6[:-2] + '-' + ipv6[-2:]
     ipv6 = ipv6.replace(":", "-")
-    ipv6 = ipv6.replace("-FF-FE-", "-")
+    ipv6 = ipv6.replace("-ff-fe-", "-")
 
     second_4_bits = int(ipv6[1], 16)
     second_bin = decToBin(second_4_bits)[-4:]
     second_bin = bitFlipper(second_bin)
     second_bin = int(second_bin, 2)
-    second_bin = hex(second_bin).upper()
+    second_bin = hex(second_bin).lower()
     second_4_bits = second_bin[2:]
 
     if ipv6[1] != second_4_bits:
@@ -137,8 +137,8 @@ def linklocal2mac():
 
 
 print("Please Select an Option: ")
-print(f"1. {bcolors.YELLOW}MAC-Address{bcolors.ENDC} to {bcolors.OKBLUE}IPv6 Link-Local{bcolors.ENDC}")
-print(f"2. {bcolors.OKBLUE}IPv6 Link-Local{bcolors.ENDC} to {bcolors.YELLOW}MAC-Address{bcolors.ENDC}")
+print(f"1. {bcolors.YELLOW}MAC-Address{bcolors.ENDC} to {bcolors.OKBLUE}IPv6 Link::Local{bcolors.ENDC}")
+print(f"2. {bcolors.OKBLUE}IPv6 Link::Local{bcolors.ENDC} to {bcolors.YELLOW}MAC-Address{bcolors.ENDC}")
 
 select = input("Select: ")
 print()
